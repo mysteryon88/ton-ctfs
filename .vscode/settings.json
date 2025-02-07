@@ -1,0 +1,6 @@
+{
+    "[tact]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "KonVik.tact-lang-vscode"
+    }
+}
