@@ -1,5 +1,7 @@
 #include "../stdlib.fc";
 
+;; https://github.com/ton-blockchain/hack-challenge-1/blob/master/2.%20bank/bank.func
+
 () recv_internal (msg_value, in_msg_full, in_msg_body) {
     if (in_msg_body.slice_empty?()) { ;; ignore empty messages
         return ();
