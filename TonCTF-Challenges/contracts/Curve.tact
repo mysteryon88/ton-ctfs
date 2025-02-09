@@ -1,16 +1,15 @@
 import "@stdlib/deploy";
 
+message Key {
+    k: Int
+}
+
 struct Point {
     x: Int;
     y: Int;
 }
 
-message Key {
-    k: Int
-}
-
 contract Curve with Deployable {
-
     is_solve: Bool;
     p: Int;
     for_init: Int;
@@ -22,7 +21,7 @@ contract Curve with Deployable {
         self.p = 1124575627794835616567;
         self.a = 7289870645149292820;
         self.b = 871152686138947806299;
-        self.zero = Point{x:26268578989036317972,y:447359380003772275836};
+        self.zero = Point{x:26268578989036317972, y:447359380003772275836};
         self.is_solve = false;
         self.for_init = for_init;
     }
@@ -104,5 +103,5 @@ contract Curve with Deployable {
     get fun is_solved(): Bool {
         return self.is_solve;
     }
-
 }
+

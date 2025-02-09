@@ -1,4 +1,4 @@
-#include "imports/stdlib.fc";
+#include "../stdlib.fc";
 
 ;; storage#_ addr1:MsgAddress addr2:MsgAddress = Storage;
 ;; https://github.com/ton-blockchain/hack-challenge-1/tree/master/1.%20mutual%20fund
