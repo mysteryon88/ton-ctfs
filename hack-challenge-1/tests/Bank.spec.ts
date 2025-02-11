@@ -1,6 +1,6 @@
 import { Blockchain, SandboxContract, TreasuryContract } from '@ton/sandbox';
-import { beginCell, Cell, Dictionary, Slice, toNano, Address, Builder, DictionaryValue, BitBuilder } from '@ton/core';
-import { Bank, value } from '../wrappers/Bank';
+import { Cell, Dictionary, toNano } from '@ton/core';
+import { Bank, value } from '../wrappers/wrappers/Bank';
 import '@ton/test-utils';
 import { compile } from '@ton/blueprint';
 

@@ -1,10 +1,3 @@
-{-
-
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  Contract contains intentional bugs, do not use in production
-
--}
-
 #include "../stdlib.fc";
 
 () recv_internal (msg_value, in_msg_full, in_msg_body) {
@@ -32,11 +25,16 @@
     }
     if(rand(10000) == 7777) {
         var msg = begin_cell()
-        .store_uint(0x18, 6)
-        .store_slice(sender_address)
-        .store_coins(0)
-        .store_uint(0, 1 + 4 + 4 + 64 + 32 + 1 + 1)
-      .end_cell();
+                .store_uint(0x18, 6)
+                .store_slice(sender_address)
+                .store_coins(0)
+                .store_uint(0, 1 + 4 + 4 + 64 + 32 + 1 + 1)
+                .end_cell();
         send_raw_message(msg, 2 + 128);
     }
+}
+
+int balance() method_id {
+    var [ balance, _ ] = get_balance();
+    return balance;
 }

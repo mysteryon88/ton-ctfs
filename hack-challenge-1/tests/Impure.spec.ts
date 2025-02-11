@@ -1,7 +1,6 @@
 import { Blockchain, SandboxContract, TreasuryContract } from '@ton/sandbox';
-import { KeyPair, getSecureRandomBytes, keyPairFromSeed, sign } from '@ton/crypto';
 import { beginCell, Cell, toNano } from '@ton/core';
-import { Impure } from '../wrappers/Impure';
+import { Impure } from '../wrappers/wrappers/Impure';
 import '@ton/test-utils';
 import { compile } from '@ton/blueprint';
 
