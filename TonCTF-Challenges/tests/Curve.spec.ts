@@ -12,15 +12,39 @@ describe('Curve', () => {
     let level: SandboxContract<Curve>;
 
     let player: SandboxContract<TreasuryContract>;
-    let owner: SandboxContract<TreasuryContract>;
 
     beforeAll(async () => {
         blockchain = await Blockchain.create();
         player = await blockchain.treasury('player');
-        owner = await blockchain.treasury('owner');
 
         level = blockchain.openContract(await Curve.fromInit(0n));
+
+        await level.send(
+            player.getSender(),
+            {
+                value: toNano('0.05'),
+            },
+            {
+                $$type: 'Deploy',
+                queryId: 0n,
+            },
+        );
     });
 
-    it('Exploit', async () => {});
+    it('Exploit', async () => {
+        expect(await level.getIsSolved()).toEqual(false);
+
+        await level.send(
+            player.getSender(),
+            {
+                value: toNano('1'),
+            },
+            {
+                $$type: 'Key',
+                k: 23019947n,
+            },
+        );
+
+        expect(await level.getIsSolved()).toEqual(true);
+    });
 });
