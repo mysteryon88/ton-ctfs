@@ -1,3 +1,4 @@
+import "@stdlib/deploy";
 // message
 message Claim {
     recipient: Address;
@@ -139,5 +140,21 @@ contract MerkleAirdrop {
             i = i + 1;
         }
         return leaf == self.merkleRoot;
+    }
+}
+
+contract Exploit with Deployable {
+    init(){}
+
+    get fun sha256(x: Int): Int {
+        return sha256(x.toString());
+    }
+
+    get fun myLeaf(recipient: Address, amount: Int): Int {
+        let seedBuilder: StringBuilder = beginString();
+        seedBuilder.append(recipient.toString());
+        seedBuilder.append(amount.toString());
+        let leaf: Int = sha256(seedBuilder.toString());
+        return leaf;
     }
 }
