@@ -13,7 +13,6 @@ contract Random with Deployable {
         let key: Int = 0;
         if (msg.luckynumber > 0) {
             key = verify % 100;
-            dump(key);
             if (msg.luckynumber == key) {
                 self.notify("Congratulations on winning the prize!".asComment());
                 self.flag = 1;

@@ -8,14 +8,11 @@ describe('Airdrop', () => {
     let blockchain: Blockchain;
 
     let level: SandboxContract<AirDrop>;
-
     let player: SandboxContract<TreasuryContract>;
-    let owner: SandboxContract<TreasuryContract>;
 
     beforeAll(async () => {
         blockchain = await Blockchain.create();
         player = await blockchain.treasury('player');
-        owner = await blockchain.treasury('owner');
 
         level = blockchain.openContract(await AirDrop.fromInit(0n));
     });

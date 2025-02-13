@@ -3,8 +3,6 @@ import { toNano } from '@ton/core';
 import { Curve } from '../wrappers/wrappers/Curve';
 import '@ton/test-utils';
 
-jest.setTimeout(0);
-
 // npx blueprint test Curve.spec.ts
 describe('Curve', () => {
     let blockchain: Blockchain;
@@ -32,6 +30,7 @@ describe('Curve', () => {
     });
 
     it('Exploit', async () => {
+        // The solution is in the curve.py file
         expect(await level.getIsSolved()).toEqual(false);
 
         await level.send(
