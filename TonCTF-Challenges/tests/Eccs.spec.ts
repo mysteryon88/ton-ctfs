@@ -1,13 +1,13 @@
 import { Blockchain, SandboxContract, TreasuryContract } from '@ton/sandbox';
 import { toNano } from '@ton/core';
-import { Curve } from '../wrappers/wrappers/Curve';
+import { Eccs } from '../wrappers/wrappers/Eccs';
 import '@ton/test-utils';
 
-// npx blueprint test Curve.spec.ts
-describe('Curve', () => {
+// npx blueprint test Eccs.spec.ts
+describe('Eccs', () => {
     let blockchain: Blockchain;
 
-    let level: SandboxContract<Curve>;
+    let level: SandboxContract<Eccs>;
 
     let player: SandboxContract<TreasuryContract>;
 
@@ -15,7 +15,7 @@ describe('Curve', () => {
         blockchain = await Blockchain.create();
         player = await blockchain.treasury('player');
 
-        level = blockchain.openContract(await Curve.fromInit(0n));
+        level = blockchain.openContract(await Eccs.fromInit(0n));
 
         await level.send(
             player.getSender(),
@@ -30,14 +30,13 @@ describe('Curve', () => {
     });
 
     it('Exploit', async () => {
-        // The solution is in the curve.py file
         expect(await level.getIsSolved()).toEqual(false);
 
-        const key = 23019947n;
+        const key = 0n;
 
         const check = await level.getCheck(key);
-        expect(check.x).toEqual(1098402780140240490917n);
-        expect(check.y).toEqual(1079661110557516547244n);
+        expect(check.x).toEqual(456557409365020317n);
+        expect(check.y).toEqual(354112687690635257n);
 
         await level.send(
             player.getSender(),
