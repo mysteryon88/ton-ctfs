@@ -69,7 +69,7 @@ contract Dex with Deployable {
                 value: msg.value,
                 mode: SendRemainingValue,
                 to: ctx.sender,
-                body: "Withdraw сompleted".asComment()
+                body: "Withdraw completed".asComment()
             }
         );
     }
@@ -83,5 +83,25 @@ contract Dex with Deployable {
 
     get fun is_solved(): Bool {
         return self.solved == true;
+    }
+
+    get fun is_locked(): Bool {
+        return self.lock;
+    }
+
+    get fun tokena_amount(): Int {
+        return self.tokena_amount;
+    }
+
+    get fun tokenb_amount(): Int {
+        return self.tokenb_amount;
+    }
+
+    get fun tokena_balance(): Int {
+        return self.user_balances.get(1)!!;
+    }
+
+    get fun tokenb_balance(): Int {
+        return self.user_balances.get(2)!!;
     }
 }
