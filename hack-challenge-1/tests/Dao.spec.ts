@@ -49,8 +49,6 @@ describe('Dao', () => {
     });
 
     it('Exploit', async () => {
-        const balanceBefore = (await blockchain.getContract(dao.address)).balance;
-
         await sendMoveVotes('EQCD39VS5jcptHL8vMjEXrzGaRcCVYto7HUn4bpAOg8xqB2N');
         await sendMoveVotes('EQAhE3sLxHZpsyZ_HecMuwzvXHKLjYx4kEUehhOy2JmCcHCT');
         await sendMoveVotes('EQCtiv7PrMJImWiF2L5oJCgPnzp-VML2CAt5cbn1VsKAxLiE');
