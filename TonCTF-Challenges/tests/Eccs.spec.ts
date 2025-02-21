@@ -32,7 +32,7 @@ describe('Eccs', () => {
     it('Exploit', async () => {
         expect(await level.getIsSolved()).toEqual(false);
 
-        const key = 0n;
+        const key = 844279n;
 
         const check = await level.getCheck(key);
         expect(check.x).toEqual(456557409365020317n);
