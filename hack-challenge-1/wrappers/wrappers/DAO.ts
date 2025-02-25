@@ -7,11 +7,9 @@ import {
     contractAddress,
     ContractProvider,
     Dictionary,
-    DictionaryValue,
     Sender,
     SendMode,
     Slice,
-    TupleItemSlice,
 } from '@ton/core';
 
 export type DaoConfig = {

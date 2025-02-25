@@ -7,7 +7,6 @@ import {
     contractAddress,
     ContractProvider,
     Dictionary,
-    DictionaryValue,
     Sender,
     SendMode,
     Slice,
