@@ -44,6 +44,7 @@ describe('BounceLevel', () => {
         await timer.send(player.getSender(), { value: toNano('0.1') }, { $$type: 'Start', time: 10n });
 
         await level.send(player.getSender(), { value: toNano('0.1') }, 'finish');
+        // await contract.send(player, { value: toNano('0.1') }, 'finish');
 
         await level.send(player.getSender(), { value: toNano('0.1') }, 'check');
 
