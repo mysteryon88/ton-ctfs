@@ -9,7 +9,7 @@ import { Address, beginCell, Cell, toNano } from '@ton/core';
 import '@ton/test-utils';
 import { compile } from '@ton/blueprint';
 import { TonClient4 } from '@ton/ton';
-import { Proxy } from '../wrappers/Proxy';
+import { Proxy } from '../wrappers/wrappers/Proxy';
 
 // npx blueprint test 19. Proxy.spec.ts
 describe('Proxy', () => {
