@@ -39,20 +39,20 @@ describe('BruteforceLevel', () => {
     });
 
     it('Exploit', async () => {
-        expect(await level.getLocked()).toEqual(true);
+        // expect(await level.getLocked()).toEqual(true);
 
-        await level.send(
+        // await contract.send(player, { value: toNano('0.1') }, { $$type: 'Unlock', a: -1199n, b: -849n, c: 1200n, d: 850n });
+
+        const res = await level.send(
             player.getSender(),
             {
                 value: toNano('0.05'),
             },
-            { $$type: 'Unlock', a: 10n, b: -4n, c: -3n, d: -1n },
+            { $$type: 'Unlock', a: -1199n, b: -849n, c: 1200n, d: 850n },
         );
 
-        // expect(await level.getLocked()).toEqual(false);
+        console.log(res);
 
-        const addr = Address.parse('EQCqNt7ZSCtv6wVYqL76NYzV5rFwUV0kCfJun3VFFIon-fLy');
-
-        console.log(addr.hash);
+        expect(await level.getLocked()).toEqual(false);
     });
 });

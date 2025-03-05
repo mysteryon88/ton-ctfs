@@ -5,5 +5,6 @@ export const compile: CompilerConfig = {
     target: 'contracts/5. PartialLevel.tact',
     options: {
         debug: true,
+        external: true,
     },
 };
